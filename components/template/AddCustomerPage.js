@@ -1,5 +1,5 @@
 import { useState } from "react";
-import toast from "react-hot-toast";
+import {toast} from "react-toastify";
 import { useRouter } from "next/router";
 
 import Form from "../module/Form";

@@ -1,4 +1,4 @@
-import Card from "../module/Card";
+import Card from "@/components/module/Card";
 
 function HomePage({ customers }) {
   return (

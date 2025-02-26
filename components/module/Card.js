@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { toast } from "react-toastify";
 import { Pencil, ReceiptText, Trash2 } from "lucide-react";
-// import toast from "react-hot-toast";
+import Modal from "./Modal";
 
 function Card({ customer }) {
+  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
   const deleteHandler = async () => {
@@ -12,10 +15,13 @@ function Card({ customer }) {
     });
     const data = await res.json();
     if (data.status === "success") {
-      // toast.success("با موفقیت حذف شد.")
+      toast.success("با موفقیت حذف شد.");
       router.reload();
     }
+    setShowModal(false);
   };
+
+ 
 
   return (
     <div className="bg-[#262836] text-[#57aac8] mx-0 my-[10px] py-5 px-[10px] rounded-md flex justify-between">
@@ -27,7 +33,7 @@ function Card({ customer }) {
       </div>
       <div className="flex">
         <button
-          onClick={deleteHandler}
+          onClick={() => setShowModal(true)}
           className=" text-[#f0394b] ml-4 rounded-md cursor-pointer"
         >
           <Trash2 />
@@ -45,6 +51,7 @@ function Card({ customer }) {
           <ReceiptText />
         </Link>
       </div>
+      {showModal && (<Modal setShowModal={setShowModal} deleteHandler={deleteHandler} />)}
     </div>
   );
 }
