@@ -15,7 +15,7 @@ function Layout({ children }) {
 
       <div className="font-vazir min-h-24">{children}</div>
       <footer className="font-vazir bg-[#262836] text-center text-white py-5 px-[10px] rounded-[10px]">
-        پروژه ی مدیریت مشتریان
+        توسعه داده شده با ❤️
       </footer>
     </>
   );
